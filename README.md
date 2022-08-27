@@ -30,6 +30,7 @@ Package overview
 * `is_overdispersion`: Hypothesis test for the existence of over-dispersion.
 * `is_zero_infla`: Check the existence of inflated zeros. 
 * `pca_simple`: A simplified principle component analysis for microbial data.
+* `plot_trio`: Graphic display of trio estimates to observe the Two-Wing pattern.
 * `refine_boundary`: Define a model-driven testable boundary between dispersal vangguards and dispersal laggards.
 
 ### Quick start guide
@@ -40,7 +41,24 @@ Package overview
 library(PMCosm)
 # import sample data from microbial communities in hangzhou bay
 data(hzmicrobe)
-param_trio <- calc_mle_trio(mic_bay, n_sample=10, replicates=3)
+param_trio_bay <- calc_mle_trio(mic_bay, n_sample=10, replicates=3)
+param_trio_era <- calc_mle_trio(mic_era, n_sample=12, replicates=3)
 ```
+#### Visualize the Two-Wing admixed structure
+
+```R
+library(ggplot2)
+library(latex2exp)
+# for bay
+plot_trio(param_trio_bay, point_size=0.8, a=0.6)
+# zoom in for the majority 
+plot_trio(param_trio_bay, point_size=0.8, a=0.6, zoom_in=TRUE)
+# for era 
+plot_trio(param_trio_era, point_size=0.8, a=0.6)
+```
+
+
+
+
 
 
