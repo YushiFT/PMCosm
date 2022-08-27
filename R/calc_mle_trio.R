@@ -13,12 +13,12 @@
 #' @examples
 #' # import data
 #' data(hzmicrobe)
-#' param_bay <- (mic_bay, n_sample=10, replicates=3)
+#' param_bay <- calc_mle_trio(mic_bay, n_sample=10, replicates=3)
 #'
 #'
 #' @export
 #'
-calc_mle_gpm <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3){
+calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3){
   param_trio <- data.frame()
   for(i in 1:nrow(x)){
     if (is_zero_infla(as.numeric(x[i,]), n_sample, replicates, max_prop_zero=2/3)){
