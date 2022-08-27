@@ -1,0 +1,19 @@
+Package: PMCosm
+Type: Package
+Title: Probabilistic Models for Microbial-Cosmos
+Version: 0.1.0
+Date: 2022-08-15
+Authors@R: c(
+    person(given = "Yushi",
+	   family = "Tang",
+	   role = c("aut", "cre"),
+	   email = "yushi.tang@princeton.edu",
+           comment = c(ORCID = "0000-0002-3809-2129"))
+    )
+Maintainer: Yushi Tang <yushi.tang@princeton.edu>
+Description: This package implements statistical inferences for microbial ecology analysis. It provides methods for categorizing the admixed structure of microbial communities, detecting influential microbes in both engineered and natural environments, evaluating sub-communities' preferences of life strategies, identifying causal relationship between microbes' metabolism functions and fluctuations of surrounding environments, and predicting the community composition and structure for a given local environment. 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/YushiFT/PMCosm
+RoxygenNote: 7.2.1
