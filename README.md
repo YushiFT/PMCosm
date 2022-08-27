@@ -32,4 +32,15 @@ Package overview
 * `pca_simple`: A simplified principle component analysis for microbial data.
 * `refine_boundary`: Define a model-driven testable boundary between dispersal vangguards and dispersal laggards.
 
+### Quick start guide
+
+#### Deriving MLE estimates for the admixed structure of environmental microbial communities
+
+```R
+library(PMCosm)
+# import sample data from microbial communities in hangzhou bay
+data(hzmicrobe)
+param_trio <- calc_prior_parameters_mle(mic_bay)
+```
+
 
