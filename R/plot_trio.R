@@ -3,6 +3,8 @@
 #' This function provides graphic display of the MLE parameter trio.
 #'
 #' @param param_trio  The n by 3 matrix of MLE parameter trio estimates.
+#' @param point_size  The numeric number between 0 and 1 for the point size. 
+#' @param a The numeric number between 0 and 1 for the alpha transparency level.
 #'
 #' @return 
 #' Nothing of interest.
@@ -15,10 +17,10 @@
 #'
 #'
 #' @export
-plot_trio <- function(param_trio){
+plot_trio <- function(param_trio, point_size=0.8, a=0.6){
   ggplot() +
     geom_point(data=param_trio, 
-               aes(x=log(k), y=log(mu), color=pi0),alpha=0.6,size=0.24) +
+               aes(x=log(k), y=log(mu), color=pi0),alpha=a,size=point_size) +
     ylab(TeX('\\log{(\\hat{\\mu})}')) +
     xlab(TeX('\\log{(\\hat{k})}')) +
     ggtitle(TeX('')) +
@@ -30,7 +32,7 @@ plot_trio <- function(param_trio){
           panel.grid.minor = element_blank(),
           axis.title.x = element_text(size = 12),
           axis.title.y = element_text(size = 12),
-          axis.text.x = element_text(size = 9, vjust = 0.5, hjust = 0),
+          axis.text.x = element_text(size = 9),
           axis.text.y = element_text(size=9),
           strip.text = element_text(size = 12),
           legend.title = element_text(color = "black", size = 12),
