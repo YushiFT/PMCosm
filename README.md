@@ -16,8 +16,7 @@ To install, open R and type:
 
 ```R
 install.packages("devtools")
-library("devtools")
-install_github("YushiFT/PMCosm")
+devtools::install_github("YushiFT/PMCosm")
 ```
 
 Package overview
