@@ -9,7 +9,8 @@ calc_mle_trio(
   n_sample = NULL,
   replicates = NULL,
   max_prop_zero = 2/3,
-  trace = FALSE
+  trace = FALSE,
+  nbinomial_source = "MASS"
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ calc_mle_trio(
 \item{max_prop_zero}{The maximum acceptable value of zero proportions per sample site.}
 
 \item{trace}{If TRUE, print out optimization details. Default is FALSE.}
+
+\item{nbinomial_source}{The source package of fitting Negative Binomial distribution. Can be either VGAM or MASS. Default is MASS.}
 }
 \value{
 A trio of two estimates of gamma-poisson parameters and the coefficient of zero-inflated model.

@@ -8,6 +8,7 @@
 #' @param replicates The numeric number of replicates per sample site.
 #' @param max_prop_zero The maximum acceptable value of zero proportions per sample site.
 #' @param trace If TRUE, print out optimization details. Default is FALSE.
+#' @param nbinomial_source The source package of fitting Negative Binomial distribution. Can be either VGAM or MASS. Default is MASS. 
 #'
 #' @return A trio of two estimates of gamma-poisson parameters and the coefficient of zero-inflated model.
 #'
@@ -19,7 +20,8 @@
 #'
 #' @export
 #'
-calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, trace=FALSE){
+calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, trace=FALSE,
+                          nbinomial_source='MASS'){
   param_trio <- data.frame()
   oldw <- getOption("warn")
   if(!trace){options(warn=-1)}
@@ -33,28 +35,28 @@ calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, 
         k   <- fit_test$theta
         logit_pi <- fit_test$coefficients$zero[['(Intercept)']]
         pi0 <- exp(logit_pi)/(1+exp(logit_pi))
-        }, error=function(e){
-          cat("Fine-tuning recommended for microbe ", rownames(x)[i], "\n")
-          })
+      }, error=function(e){
+        cat("Fine-tuning recommended for microbe ", rownames(x)[i], "\n")
+      })
     } else if (is_overdispersion(as.numeric(x[i,]), alpha=0.05)) {
       # fit negative binomial
       test_dat <- data.frame(count = as.numeric(x[i,]))
       tryCatch({
-        fit_test <- VGAM::vglm(count~1, negbinomial, data=test_dat)
-        mu  <- exp(fit_test@coefficients[['(Intercept):1']])
-        k   <- exp(fit_test@coefficients[['(Intercept):2']])
-        pi0 <- 0
-
-        # an alternative function to fit negative binomial
-        #fit_test <- MASS::glm.nb(count~1, data=test_dat,
-        #                         control=glm.control(maxit=100,trace=FALSE))
-        #mu  <- exp(fit_test$coefficients[['(Intercept)']])
-        #k   <- fit_test$theta
-        #pi0 <- 0
-
-        }, error=function(e){
-          cat("Fine-tuning recommended for microbe ", rownames(x)[i], "\n")
-          })
+        if(nbinomial_source=='VGAM'){
+          fit_test <- VGAM::vglm(count~1, negbinomial(deviance=TRUE), data=test_dat)
+          mu  <- exp(fit_test@coefficients[['(Intercept):1']])
+          k   <- exp(fit_test@coefficients[['(Intercept):2']])
+          pi0 <- 0
+        } else {
+          fit_test <- MASS::glm.nb(count~1, data=test_dat,
+                                   control=glm.control(maxit=100,trace=FALSE))
+          mu  <- exp(fit_test$coefficients[['(Intercept)']])
+          k   <- fit_test$theta
+          pi0 <- 0
+        }
+      }, error=function(e){
+        cat("Fine-tuning recommended for microbe ", rownames(x)[i], "\n")
+      })
     } else {
       # fit poisson
       test_dat <- data.frame(count = as.numeric(x[i,]))
