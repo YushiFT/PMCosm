@@ -19,10 +19,6 @@ plot_trio <- function(param_trio){
   ggplot() +
     geom_point(data=param_trio, 
                aes(x=log(k), y=log(mu), color=pi0),alpha=0.6,size=0.24) +
-    geom_vline(data=param_plt, aes(xintercept = mu_up), 
-               linetype="dotdash", color = "black", size=0.12) +
-    geom_vline(data=param_plt, aes(xintercept = k_low), 
-               linetype="dotdash", color = "black", size=0.12) +
     ylab(TeX('\\log{(\\hat{\\mu})}')) +
     xlab(TeX('\\log{(\\hat{k})}')) +
     ggtitle(TeX('')) +
