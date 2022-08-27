@@ -12,8 +12,13 @@ Authors@R: c(
     )
 Maintainer: Yushi Tang <yushi.tang@princeton.edu>
 Description: This package implements statistical inferences for microbial ecology analysis. It provides methods for categorizing the admixed structure of microbial communities, detecting influential microbes in both engineered and natural environments, evaluating sub-communities' preferences of life strategies, identifying causal relationship between microbes' metabolism functions and fluctuations of surrounding environments, and predicting the community composition and structure for a given local environment. 
+Imports:
+    AER,
+    pscl,
+    VGAM
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
+Depends:
+    R(>= 2.10)
 URL: https://github.com/YushiFT/PMCosm
 RoxygenNote: 7.2.1
