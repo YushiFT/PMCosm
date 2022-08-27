@@ -26,11 +26,7 @@ This function classify microbial taxa into six categories -
 4) CRT: conditionally rare taxa;
 5) CAT: conditionally abundant taxa;
 6) CRAT: conditionally rare or abundant taxa -
-by following four popular methods summerized in Tang et al. (2022) including -
-1) Method 0 (Dai et al. 2016);
-2) Method a (Campbell et al. 2011);
-3) Method b (Logares et al. 2014);
-4) Method c (Dai et al. 2016)
+by following four popular methods summerized in Tang et al. (2022)
 }
 \examples{
 # import data
@@ -51,4 +47,8 @@ category_method_c <- classify_taxa(mic_bay, method='c')
 print(category_method_c$AT)
 
 
+}
+\references{
+Tang Y. et al. (2022) The Two-Wing admixed structure of environmental microbial communities. (under review). \cr
+\url{https://github.com/YushiFT/two-wing-mic}
 }

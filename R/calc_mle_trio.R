@@ -3,7 +3,7 @@
 #' This function computes the MLE of prior parameters
 #' in the Gamma-Poisson model (GPM)
 #'
-#' @param x  The $n$ by $m$ matrix of microbial abundance.
+#' @param x  The n by m matrix of microbial abundance.
 #' @param n_sample The numeric number of sample size.
 #' @param replicates The numeric number of replicates per sample site.
 #' @param max_prop_zero The maximum acceptable value of zero proportions per sample site.

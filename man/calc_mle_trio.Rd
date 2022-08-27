@@ -13,7 +13,7 @@ calc_mle_trio(
 )
 }
 \arguments{
-\item{x}{The $n$ by $m$ matrix of microbial abundance.}
+\item{x}{The n by m matrix of microbial abundance.}
 
 \item{n_sample}{The numeric number of sample size.}
 

@@ -7,11 +7,7 @@
 #' 4) CRT: conditionally rare taxa;
 #' 5) CAT: conditionally abundant taxa;
 #' 6) CRAT: conditionally rare or abundant taxa -
-#' by following four popular methods summerized in Tang et al. (2022) including -
-#' 1) Method 0 (Dai et al. 2016);
-#' 2) Method a (Campbell et al. 2011);
-#' 3) Method b (Logares et al. 2014);
-#' 4) Method c (Dai et al. 2016)
+#' by following four popular methods summerized in Tang et al. (2022)
 #'
 #'
 #' @param x  The n by m matrix of microbial abundance.
@@ -20,6 +16,11 @@
 #' @param method The method index which can be 'a', 'b', 'c', or '0'.
 #'
 #' @return A list of microbial taxa categories for a given method.
+#' 
+#' @references 
+#' Tang Y. et al. (2022) The Two-Wing admixed structure of environmental microbial communities. (under review). \cr
+#' \url{https://github.com/YushiFT/two-wing-mic}
+#' 
 #'
 #' @examples
 #' # import data

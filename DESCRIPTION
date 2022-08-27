@@ -15,7 +15,9 @@ Description: This package implements statistical inferences for microbial ecolog
 Imports:
     AER,
     pscl,
-    VGAM
+    VGAM,
+    ggplot2,
+    latex2exp
 License: GPL-3
 Encoding: UTF-8
 Depends:
