@@ -7,6 +7,7 @@
 #' @param n_sample The numeric number of sample size.
 #' @param replicates The numeric number of replicates per sample site.
 #' @param max_prop_zero The maximum acceptable value of zero proportions per sample site.
+#' @param trace If TRUE, print out optimization details. Default is FALSE.
 #'
 #' @return A trio of two estimates of gamma-poisson parameters and the coefficient of zero-inflated model.
 #'
@@ -18,9 +19,10 @@
 #'
 #' @export
 #'
-calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3){
+calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, trace=FALSE){
   param_trio <- data.frame()
   oldw <- getOption("warn")
+  if(!trace){options(warn=-1)}
   for(i in 1:nrow(x)){
     if (is_zero_infla(as.numeric(x[i,]), n_sample, replicates, max_prop_zero=2/3)){
       # fit zero-inflated model
