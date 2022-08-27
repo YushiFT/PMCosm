@@ -25,7 +25,6 @@ plot_trio <- function(param_trio){
     theme_bw() +
     theme(aspect.ratio=1) +
     scale_color_continuous(type = "viridis") +
-    facet_wrap(Procedure~., scale='free', nrow=2) +
     labs(color=TeX('$\\hat{\\pi}_0$')) +
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
