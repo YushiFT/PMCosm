@@ -9,7 +9,7 @@ plot_trio(param_trio, point_size = 0.8, a = 0.6, zoom_in = FALSE)
 \arguments{
 \item{param_trio}{The n by 3 matrix of MLE parameter trio estimates.}
 
-\item{point_size}{The numeric number between 0 and 1 for the point size.}
+\item{point_size}{The numeric number for the point size.}
 
 \item{a}{The numeric number between 0 and 1 for the alpha transparency level.}
 

@@ -3,7 +3,7 @@
 #' This function provides graphic display of the MLE parameter trio.
 #'
 #' @param param_trio  The n by 3 matrix of MLE parameter trio estimates.
-#' @param point_size  The numeric number between 0 and 1 for the point size. 
+#' @param point_size  The numeric number for the point size. 
 #' @param a The numeric number between 0 and 1 for the alpha transparency level.
 #' @param zoom_in If TRUE, zoom in the majority of points. Default is FALSE.
 #'
@@ -26,7 +26,6 @@ plot_trio <- function(param_trio, point_size=0.8, a=0.6, zoom_in=FALSE){
       ylab(TeX('\\log{(\\hat{\\mu})}')) +
       xlab(TeX('\\log{(\\hat{k})}')) +
       xlim(-5,20) +
-      ylim(-5,10) +
       ggtitle(TeX('')) +
       theme_bw() +
       theme(aspect.ratio=1) +
