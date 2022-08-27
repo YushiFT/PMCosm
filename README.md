@@ -10,7 +10,7 @@ This `PMCosm` package implements statistical inferences for microbial ecology an
 * predicting the community composition and structure for a given local environment. 
 
 Installation and documentation
----------------------------------------
+------------------------------
 
 To install, open R and type:
 
@@ -19,3 +19,17 @@ install.packages("devtools")
 library("devtools")
 install_github("YushiFT/PMCosm")
 ```
+
+Package overview
+----------------
+
+### Functions 
+* `calc_prior_parameters_mle`: Calculate MLE estimates for universal parameter trio <img src="https://render.githubusercontent.com/render/math?math=(\mu,k,\pi_0)"> for inferences about the admixed community structure. 
+* `classify_taxa`: Traditional relative-abundance-based methods to classify microbial taxa into rare or abundant biospheres.
+* `is_dispersion`: Hypothesis test for the existence of dispersion.
+* `is_overdispersion`: Hypothesis test for the existence of over-dispersion.
+* `is_zero_infla`: Check the existence of inflated zeros. 
+* `pca_simple`: A simplified principle component analysis for microbial data.
+* `refine_boundary`: Define a model-driven testable boundary between dispersal vangguards and dispersal laggards.
+
+
