@@ -7,7 +7,6 @@
 #' @param n_sample The numeric number of sample size.
 #' @param replicates The numeric number of replicates per sample site.
 #' @param max_prop_zero The maximum acceptable value of zero proportions per sample site.
-#' @param trace If TRUE, print out optimization details. Default is FALSE.
 #'
 #' @return A trio of two estimates of gamma-poisson parameters and the coefficient of zero-inflated model.
 #'
@@ -19,12 +18,9 @@
 #'
 #' @export
 #'
-calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, trace=FALSE){
+calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3){
   param_trio <- data.frame()
   oldw <- getOption("warn")
-  if(!trace) {
-    options(warn=-1)
-  }
   for(i in 1:nrow(x)){
     if (is_zero_infla(as.numeric(x[i,]), n_sample, replicates, max_prop_zero=2/3)){
       # fit zero-inflated model
@@ -36,7 +32,7 @@ calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, 
         logit_pi <- fit_test$coefficients$zero[['(Intercept)']]
         pi0 <- exp(logit_pi)/(1+exp(logit_pi))
         }, error=function(e){
-          cat("ERROR :",conditionMessage(e), "when analyzing microbe ", rownames(x)[i], "\n")
+          cat("Fine-tuning recommended for microbe ", rownames(x)[i], "\n")
           })
     } else if (is_overdispersion(as.numeric(x[i,]), alpha=0.05)) {
       # fit negative binomial
@@ -55,7 +51,7 @@ calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, 
         #pi0 <- 0
 
         }, error=function(e){
-          cat("ERROR :",conditionMessage(e), "when analyzing microbe ", rownames(x)[i], "\n")
+          cat("Fine-tuning recommended for microbe ", rownames(x)[i], "\n")
           })
     } else {
       # fit poisson
@@ -71,7 +67,7 @@ calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, 
                                    pi0 = pi0))
     print(paste0('process ',round(i/nrow(x)*100, digits=2),'%' ))
   }
-  opetions(warn=oldw)
+  options(warn=0)
   rownames(param_trio) <- rownames(x)
   print('completed!!!')
   return(param_trio)

@@ -4,13 +4,7 @@
 \alias{calc_mle_trio}
 \title{MLE Parameters Trio}
 \usage{
-calc_mle_trio(
-  x,
-  n_sample = NULL,
-  replicates = NULL,
-  max_prop_zero = 2/3,
-  trace = FALSE
-)
+calc_mle_trio(x, n_sample = NULL, replicates = NULL, max_prop_zero = 2/3)
 }
 \arguments{
 \item{x}{The $n$ by $m$ matrix of microbial abundance.}
@@ -20,8 +14,6 @@ calc_mle_trio(
 \item{replicates}{The numeric number of replicates per sample site.}
 
 \item{max_prop_zero}{The maximum acceptable value of zero proportions per sample site.}
-
-\item{trace}{If TRUE, print out optimization details. Default is FALSE.}
 }
 \value{
 A trio of two estimates of gamma-poisson parameters and the coefficient of zero-inflated model.
