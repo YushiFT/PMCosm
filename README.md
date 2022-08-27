@@ -40,7 +40,7 @@ Package overview
 library(PMCosm)
 # import sample data from microbial communities in hangzhou bay
 data(hzmicrobe)
-param_trio <- calc_mle_trio(mic_bay, nsample=10, replicates=3)
+param_trio <- calc_mle_trio(mic_bay, n_sample=10, replicates=3)
 ```
 
 
