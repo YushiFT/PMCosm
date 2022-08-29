@@ -1,4 +1,4 @@
-PMCosm: Probabilistic model for microbial-cosmos
+PMCosm: Probabilistic models for microbial-cosmos
 =======
 
 This `PMCosm` package implements statistical inferences for microbial ecology analysis. This package provides methods for 
