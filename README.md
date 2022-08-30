@@ -71,7 +71,7 @@ print(id_vag_lag_era$vanguards)
 print(id_vag_lag_era$laggards)
 ```
 
-### Visualize community structure as an admixture of dispersal vanguards and laggards
+#### Visualize community structure as an admixture of dispersal vanguards and laggards
 
 ```R
 plot_vag_lag(param_trio_bay, id_vag_lag_bay)
