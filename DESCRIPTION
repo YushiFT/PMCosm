@@ -1,7 +1,7 @@
 Package: PMCosm
 Type: Package
 Title: Probabilistic Models for Microbial-Cosmos
-Version: 0.1.1
+Version: 0.1.3
 Date: 2022-08-15
 Authors@R: c(
     person(given = "Yushi",
