@@ -43,7 +43,7 @@ data(hzmicrobe)
 param_trio_bay <- calc_mle_trio(mic_bay, n_sample=10, replicates=3)
 param_trio_era <- calc_mle_trio(mic_era, n_sample=12, replicates=3)
 ```
-#### Visualize the Two-Wing admixed structure
+#### Visualize the Two-Wing admixed structure by trio parameters estimates
 
 ```R
 library(ggplot2)
@@ -54,6 +54,28 @@ plot_trio(param_trio_bay, point_size=0.8, a=0.6)
 plot_trio(param_trio_bay, point_size=0.8, a=0.6, zoom_in=TRUE)
 # for era 
 plot_trio(param_trio_era, point_size=0.8, a=0.6)
+```
+
+#### Categorize dispersal vanguards and laggards by identifying the model-driven testable boundary
+
+```R
+id_vag_lag_bay <- classify_vag_lag(mic_bay, param_trio_bay)
+id_vag_lag_era <- classify_vag_lag(mic_era, param_trio_era)
+# print ids of dispersal vanguards in bay
+print(id_vag_lag_bay$vanguards)
+# print ids of dispersal laggards in bay
+print(id_vag_lag_bay$laggards)
+# print ids of dispersal vanguards in era
+print(id_vag_lag_era$vanguards)
+# print ids of dispersal laggards in era
+print(id_vag_lag_era$laggards)
+```
+
+### Visualize community structure as an admixture of dispersal vanguards and laggards
+
+```R
+plot_vag_lag(param_trio_bay, id_vag_lag_bay)
+plot_vag_lag(param_trio_era, id_vag_lag_era)
 ```
 
 
