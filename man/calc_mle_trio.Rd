@@ -31,7 +31,7 @@ A trio of two estimates of gamma-poisson parameters and the coefficient of zero-
 }
 \description{
 This function computes the MLE of prior parameters
-in the Gamma-Poisson model (GPM)
+in the Gamma-Poisson model or Zero-inflated Gamma-Poisson model.
 }
 \examples{
 # import data

@@ -2,9 +2,10 @@
 
 export(calc_mle_trio)
 export(classify_taxa)
+export(classify_vag_lag)
 export(is_dispersion)
 export(is_overdispersion)
 export(is_zero_infla)
 export(pca_mic)
 export(plot_trio)
-export(refine_mu_k)
+export(plot_vag_lag)

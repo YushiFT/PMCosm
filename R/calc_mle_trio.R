@@ -1,7 +1,7 @@
 #' MLE Parameters Trio
 #'
 #' This function computes the MLE of prior parameters
-#' in the Gamma-Poisson model (GPM)
+#' in the Gamma-Poisson model or Zero-inflated Gamma-Poisson model.
 #'
 #' @param x  The n by m matrix of microbial abundance.
 #' @param n_sample The numeric number of sample size.
