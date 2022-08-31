@@ -73,15 +73,17 @@ classify_vag_lag <- function(x, mle_trio){
     } else {
       # strict over-dispersion test
       test_dat <- data.frame(count = as.numeric(v_ttz))
-      fit_test_gpm <- MASS::glm.nb(count~1, data=test_dat,
-                                   control=glm.control(maxit=100,trace=FALSE))
+      fit_test <- VGAM::vglm(count~1, VGAM::negbinomial(zero=1), data=test_dat)
+      fit_test_gpm <- summary(fit_test)
+      p_k <- fit_test_gpm@coef3['(Intercept):2','Pr(>|z|)']
+      # lrt
       fit_test_pm <- glm(count~1, data=test_dat, family=poisson(), trace=FALSE)
-      ll_gpm <- fit_test_gpm$twologlik/2
+      ll_gpm <- fit_test_gpm@criterion$loglikelihood
       ll_pm  <- fit_test_pm$null.deviance/(-2)
       test_stat <- -2*(ll_pm - ll_gpm)
       p_lrt <- pchisq(test_stat, df=1, lower.tail=FALSE)
       
-      return(p_lrt<=0.05)
+      return((p_k<=0.05)&(p_lrt<=0.05))
     }
   }
   

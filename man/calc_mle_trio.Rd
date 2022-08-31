@@ -10,7 +10,7 @@ calc_mle_trio(
   replicates = NULL,
   max_prop_zero = 2/3,
   trace = FALSE,
-  nbinomial_source = "MASS"
+  nbinomial_source = "VGAM"
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ calc_mle_trio(
 
 \item{trace}{If TRUE, print out optimization details. Default is FALSE.}
 
-\item{nbinomial_source}{The source package of fitting Negative Binomial distribution. Can be either VGAM or MASS. Default is MASS.}
+\item{nbinomial_source}{The source package of fitting Negative Binomial distribution. Can be either VGAM or MASS. Default is VGAM.}
 }
 \value{
 A trio of two estimates of gamma-poisson parameters and the coefficient of zero-inflated model.
