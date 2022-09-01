@@ -19,7 +19,6 @@
 #'
 #'
 #' @export
-#'
 calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, trace=FALSE,
                           nbinomial_source='VGAM'){
   param_trio <- data.frame()
@@ -43,7 +42,7 @@ calc_mle_trio <- function(x, n_sample=NULL, replicates=NULL, max_prop_zero=2/3, 
       test_dat <- data.frame(count = as.numeric(x[i,]))
       tryCatch({
         if(nbinomial_source=='VGAM'){
-          fit_test <- VGAM::vglm(count~1, VGAM::negbinomial(zero=1), data=test_dat)
+          fit_test <- VGAM::vglm(count~1, VGAM::negbinomial(zero=-2), data=test_dat)
           mu  <- exp(fit_test@coefficients[['(Intercept):1']])
           k   <- exp(fit_test@coefficients[['(Intercept):2']])
           pi0 <- 0

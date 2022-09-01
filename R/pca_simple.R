@@ -13,7 +13,6 @@
 #'
 #'
 #' @export
-#' 
 pca_mic <- function(x, center=TRUE, scale=FALSE) {
   x <- t(scale(t(x), center=center, scale=scale))
   x <- x/sqrt(nrow(x)-1)

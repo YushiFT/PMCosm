@@ -2,7 +2,8 @@
 #'
 #' This function computes a model-driven testable boundary between dispersal vanguards and laggards.
 #' It assigns every microbe within the whole community into either mu-wing (i.e., the sub-community of dispersal vanguards) 
-#' or k-wing (i.e., the sub-community of dispersal laggards).
+#' or k-wing (i.e., the sub-community of dispersal laggards). This is the same function as
+#' classify_vag_lag. This function is for paper-peer-review only.
 #'
 #' @param x  The n by m matrix of microbial abundance.
 #' @param mle_trio Then n by 3 matrix of MLE estimates.
@@ -20,7 +21,7 @@
 #' print(id_vag_lag$laggards)
 #'
 #' @export
-classify_vag_lag <- function(x, mle_trio){
+classify_mu_k <- function(x, mle_trio){
   # coarse over-dispersion group and non-over-dispersion group
   od_test <- apply(x, 1, is_overdispersion)
   id_od  <- names(od_test)[od_test==TRUE]

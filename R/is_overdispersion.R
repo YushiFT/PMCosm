@@ -14,11 +14,10 @@
 #'
 #'
 #' @export
-#'
 is_overdispersion <- function(v, alpha=0.05){
   test_dat <- data.frame(count = as.numeric(v))
   fit_test <- glm(count~., data=test_dat, family=poisson)
-  disp_test <- AER::dispersiontest(fit_test, trafo=2)
+  disp_test <- AER::dispersiontest(fit_test, trafo=2, alternative='greater')
   return(disp_test$p.value <= alpha)
 }
 

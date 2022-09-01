@@ -18,7 +18,6 @@
 #'
 #'
 #' @export
-#'
 is_zero_infla <- function(v, n_sample=NULL, replicates=NULL, max_prop_zero=2/3){
   # evaluate zero inflation
   # v is an m-length vector, denoting the abundance of a specific microbe

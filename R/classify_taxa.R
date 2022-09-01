@@ -42,7 +42,6 @@
 #'
 #'
 #' @export
-#'
 classify_taxa <- function(x, t_lower=0.0001, t_upper=0.01, method='0'){
   if (!(method %in% c('0','a','b','c'))){
     stop("method unavailable, should be either one of 0, a, b, or c.")
