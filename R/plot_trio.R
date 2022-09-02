@@ -6,6 +6,7 @@
 #' @param point_size  The numeric number for the point size. 
 #' @param a The numeric number between 0 and 1 for the alpha transparency level.
 #' @param zoom_in If TRUE, zoom in the majority of points. Default is FALSE.
+#' @param show_inf If TRUE, list Poisson distributed data -- i.e., microbes with infinite k -- on the right. Defalt is FALSE.
 #'
 #' @return 
 #' Nothing of interest.
@@ -18,7 +19,10 @@
 #'
 #'
 #' @export
-plot_trio <- function(param_trio, point_size=0.8, a=0.6, zoom_in=FALSE){
+plot_trio <- function(param_trio, point_size=0.8, a=0.6, zoom_in=FALSE, show_inf=FALSE){
+  if(!show_inf) {
+    param_trio <- param_trio[param_trio$k!=Inf,]
+  }
   if(zoom_in){
     ggplot() +
       geom_point(data=param_trio, 

@@ -9,7 +9,8 @@ plot_vag_lag(
   id_category,
   point_size = 0.8,
   a = 0.6,
-  zoom_in = FALSE
+  zoom_in = FALSE,
+  show_inf = FALSE
 )
 }
 \arguments{
@@ -20,6 +21,8 @@ plot_vag_lag(
 \item{a}{The numeric number between 0 and 1 for the alpha transparency level.}
 
 \item{zoom_in}{If TRUE, zoom in the majority of points. Default is FALSE.}
+
+\item{show_inf}{If TRUE, list Poisson distributed data -- i.e., microbes with infinite k -- on the right. Defalt is FALSE.}
 }
 \value{
 Nothing of interest.

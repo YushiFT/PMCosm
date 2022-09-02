@@ -6,6 +6,7 @@
 #' @param point_size  The numeric number for the point size. 
 #' @param a The numeric number between 0 and 1 for the alpha transparency level.
 #' @param zoom_in If TRUE, zoom in the majority of points. Default is FALSE.
+#' @param show_inf If TRUE, list Poisson distributed data -- i.e., microbes with infinite k -- on the right. Defalt is FALSE.
 #'
 #' @return 
 #' Nothing of interest.
@@ -20,7 +21,11 @@
 #'
 #' @export
 plot_vag_lag <- function(param_trio, id_category,
-                         point_size=0.8, a=0.6, zoom_in=FALSE){
+                         point_size=0.8, a=0.6, zoom_in=FALSE, show_inf=FALSE){
+  if(!show_inf) {
+    param_trio <- param_trio[param_trio$k!=Inf,]
+  }
+  
   param_trio$Category <- "None"
   param_trio[id_category$vanguards,]$Category <- "Dispersal Vanguards"
   param_trio[id_category$laggards,]$Category <- "Dispersal Laggards"
