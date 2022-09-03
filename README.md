@@ -25,12 +25,13 @@ Package overview
 ### Functions 
 * `calc_mle_trio`: Calculate MLE estimates for universal parameter trio for inferences about the admixed community structure. 
 * `classify_taxa`: Traditional relative-abundance-based methods to classify microbial taxa into rare or abundant biospheres.
+* `classify_vag_lag`: Define a model-driven testable boundary between dispersal vangguards and dispersal laggards.
 * `is_dispersion`: Hypothesis test for the existence of dispersion.
 * `is_overdispersion`: Hypothesis test for the existence of over-dispersion.
 * `is_zero_infla`: Check the existence of inflated zeros. 
 * `pca_simple`: A simplified principle component analysis for microbial data.
 * `plot_trio`: Graphic display of trio estimates to observe the Two-Wing pattern.
-* `refine_boundary`: Define a model-driven testable boundary between dispersal vangguards and dispersal laggards.
+
 
 ### Quick start guide
 
