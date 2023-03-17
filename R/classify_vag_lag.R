@@ -34,11 +34,24 @@ classify_vag_lag <- function(x, mle_trio){
     # calculate median absolute deviation
     return(median(abs(v-median(v))))
   }
+
+  ttz_lower_upper <- function(l_k_od, l_k_nod){
+    b1_logk <- median(l_k_od)  + 1.4826*calc_mad(l_k_od)
+    b2_logk <- median(l_k_nod) - 1.4826*calc_mad(l_k_nod)
+    if(b1_logk < b2_logk){
+      ttz_b1_b2 <- list(b1_logk, b2_logk)
+    } else {
+      ttz_b1_b2 <- list(mean(l_k_od)+sd(l_k_od), mean(l_k_od)+1.5*sd(l_k_od))
+    }
+    names(ttz_b1_b2) <- c('lower_bound', 'upper_bound')
+    return(ttz_b1_b2)
+  }
   
+  ttz_b1_b2 <- ttz_lower_upper(l_k_od, l_k_nod)
   # b1: the lower bound for the temporary transition region
-  b1_logk <- median(l_k_od) + 1.4826*calc_mad(l_k_od)
+  b1_logk <- ttz_b1_b2$lower_bound
   # b2: the upper bound for the temporary transition region
-  b2_logk <- median(l_k_nod) - 1.4826*calc_mad(l_k_nod)
+  b2_logk <- ttz_b1_b2$upper_bound
   # assign microbes with log(k) less than b1 to mu-wing, i.e., dispersal vanguards
   id_mu <- rownames(mle_trio[mle_trio$k<exp(b1_logk),])
   # assign microbes with log(k) greater than b2 to k-wing, i.e., dispersal laggards
